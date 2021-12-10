@@ -1,0 +1,7 @@
+{
+  "name": "tiendaHerramientas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
