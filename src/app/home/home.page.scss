@@ -25,3 +25,19 @@
 #container a {
   text-decoration: none;
 }
+@media only screen and (min-width: 0) and (max-width: 8000px){
+  ion-content {
+    --color: #d16a0f;
+    --background: #202020;
+  }
+}
+
+.inpu1{
+  --color: #d16a0f;
+  --background: #181818;
+}
+
+.titt2{
+  --color: white;
+  --background: #202020;
+}

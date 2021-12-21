@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar class="titt">
+    <ion-title >Detalles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="content">
+  <ion-item class="lab1">
+    <ion-label >Titulo: </ion-label>
+    <ion-input class="inp1" [(ngModel)]="document.data.titulo"> </ion-input>
+  </ion-item>
+  <ion-item class="lab2">
+    <ion-label >Precio (€): </ion-label>
+    <ion-input class="inp2" [(ngModel)]="document.data.precio"> </ion-input>
+  </ion-item>
+  <ion-item class="lab3">
+    <ion-label >Descripción: </ion-label>
+    <ion-input class="inp3" [(ngModel)]="document.data.descripcion"> </ion-input>
+  </ion-item>
+  <ion-item class="lab4" >
+    <ion-label >Imágen: </ion-label>
+    <ion-input class="inp4" [(ngModel)]="document.data.imagen"> </ion-input>
+  </ion-item>
+  <br>
+  <ion-button class="bto1" (click)="clicBotonInsertar()" *ngIf="this.document.id==''"><ion-icon name="add"></ion-icon>Añadir herramienta</ion-button>
+  <ion-button class="bto2" (click)="clicBotonBorrar()" *ngIf="this.document.id== this.id"><ion-icon name="trash"></ion-icon>Borrar herramienta</ion-button>
+  <ion-button class="bto3" (click)="clicBotonModificar()" *ngIf="this.document.id==this.id"><ion-icon name="construct"></ion-icon>Modificar herramienta</ion-button>
+</ion-content>

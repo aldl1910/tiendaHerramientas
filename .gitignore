@@ -29,3 +29,7 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+
+/environment.ts
+*enviroment.ts
+enviroment.ts
