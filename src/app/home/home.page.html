@@ -27,5 +27,34 @@
         </ion-col>
       </ng-container>
       </ion-row>
-    </ion-grid>  
+    </ion-grid> 
+    
 </ion-content>
+
+
+<ion-toolbar >
+  <ion-tabs >
+    <ion-tab-bar class="navbar2" slot="end">
+      <ion-tab-button tab="home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Incio</ion-label>
+      </ion-tab-button>
+
+
+      <ion-tab-button (click)="logout()" *ngIf="this.userUID != '' "tab="login">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>Logged</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="login()" *ngIf="this.userUID == ''" tab="login">
+        <ion-icon name="person-add"></ion-icon>
+        <ion-label>Log in</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="informacion">
+        <ion-icon name="information-circle"></ion-icon>
+        <ion-label>Acerca de...</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>

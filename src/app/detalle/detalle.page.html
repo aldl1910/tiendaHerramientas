@@ -17,12 +17,63 @@
     <ion-label >Descripción: </ion-label>
     <ion-input class="inp3" [(ngModel)]="document.data.descripcion"> </ion-input>
   </ion-item>
-  <ion-item class="lab4" >
-    <ion-label >Imágen: </ion-label>
-    <ion-input class="inp4" [(ngModel)]="document.data.imagen"> </ion-input>
+  <ion-item class="lab4">
+    <ion-label>Imágen: </ion-label>
   </ion-item>
+  <ion-item class="lab5">
+    <img src="{{document.data.imagen}}">
+  </ion-item>
+  <ion-item class="lab6">  
+    <ion-button class="btoImg1" (click)="uploadImagePicker()" *ngIf="this.document.data.imagen == null" ><ion-icon name="camera"></ion-icon></ion-button>
+    <ion-button class="btoImg2" (click)="borrarImagen()" *ngIf="this.document.data.imagen != null" ><ion-icon name="trash"></ion-icon></ion-button>
+  </ion-item>
+  <ion-item class="lab7">  
+  <ion-col size="2">
+    <ion-button color="light" (click)="ShareGeneric()"><ion-icon name="share-social-outline"></ion-icon></ion-button>
+  </ion-col>
+  <ion-col size="2">
+    <ion-button color="warning" (click)="SendEmail()"><ion-icon name="mail-outline"></ion-icon></ion-button>
+  </ion-col>
+  <ion-col size="2">
+    <ion-button color="primary" (click)="ShareFacebook()"><ion-icon name="logo-facebook"></ion-icon></ion-button>
+  </ion-col>
+  <ion-col size="2">
+      <ion-button color="success" (click)="ShareWhatsapp()"><ion-icon name="logo-whatsapp"></ion-icon></ion-button>
+  </ion-col>
+  <ion-col size="2">
+    <ion-button  color="secondary" (click)="SendTwitter()"><ion-icon name="logo-twitter"></ion-icon></ion-button>
+  </ion-col>   
+  <ion-col size="2">
+    <ion-button color="tertiary" (click)="SendInstagram()"><ion-icon name="logo-instagram"></ion-icon></ion-button>
+  </ion-col>    
+
+  </ion-item>
+  <!-- <ion-input class="inp4" [(ngModel)]="document.data.imagen"> </ion-input>-->
+  
   <br>
   <ion-button class="bto1" (click)="clicBotonInsertar()" *ngIf="this.document.id==''"><ion-icon name="add"></ion-icon>Añadir herramienta</ion-button>
   <ion-button class="bto2" (click)="clicBotonBorrar()" *ngIf="this.document.id== this.id"><ion-icon name="trash"></ion-icon>Borrar herramienta</ion-button>
   <ion-button class="bto3" (click)="clicBotonModificar()" *ngIf="this.document.id==this.id"><ion-icon name="construct"></ion-icon>Modificar herramienta</ion-button>
+
 </ion-content>
+<ion-toolbar >
+  <ion-tabs  >
+    <ion-tab-bar class="navbar1" slot="end">
+      <ion-tab-button tab="home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Incio</ion-label>
+      </ion-tab-button>
+
+
+      <ion-tab-button tab="login">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>Logged</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="informacion">
+        <ion-icon name="information-circle"></ion-icon>
+        <ion-label>Acerca de...</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>

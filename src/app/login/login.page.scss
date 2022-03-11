@@ -1,0 +1,46 @@
+@media only screen and (min-width: 0) and (max-width: 8000px){
+  ion-content {
+    --color: #d16a0f;
+    --background: #202020;
+  }
+}
+.error-message
+{
+ color: var(--ion-color-danger);
+}
+
+.go-to-register
+{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.submit-btn
+{
+  margin-top: 40px;
+  --color: white;
+  --background: #d16a0f;
+}
+.link {
+  --color: #d16a0f;
+}
+.navbar1{
+  --color:white;
+  --background:#202020;
+}
+.tit{
+  --color: white;
+  --background: #202020;
+}
+.inp1 {
+  --color: white;
+  --background: #202020;
+}
+
+.lab1 {
+  --color: white;
+  --background: #181818;
+}
+.text{
+  --color: white!important;
+}
