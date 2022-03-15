@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
+import { AuthService } from '../services/auth.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 import * as L from 'leaflet';
 @Component({
   selector: 'app-informacion',
@@ -9,21 +12,42 @@ import * as L from 'leaflet';
 
 export class InformacionPage implements OnInit {
 
+  // VARIABLE PARA EL MAPA
   map: L.Map;
-  constructor(private callNumber:CallNumber) { }
 
+  // VARIABLES USADAS PARA INICIAR SESION
+  userEmail: String = "";
+  userUID: String = "";
+  isLogged: boolean;
+
+  constructor(
+    private callNumber:CallNumber,
+    private authService: AuthService, 
+    public afAuth: AngularFireAuth,
+    private router: Router
+  ) { }
+
+  // MÉTODO PARA REALIZAR LA LLAMADA
   llamada(){
     this.callNumber.callNumber('4556541648',true)
     .then(()=> console.log("llamada exitosa"))
     .catch(() => console.log("error"))
   }
 
+  // MÉTODO QUE VERIFICA EL INICIO DE SESIÓN
   ionViewDidEnter(){
     this.loadMap();
+    this.isLogged = false;
+    this.afAuth.user.subscribe(user =>{
+      if(user){
+        this.userEmail = user.email;
+        this.userUID = user.uid;
+        this.isLogged = true;
+      } 
+    })
   }
-  
-  
 
+  // MÉTODO QUE CARGA EL MAPA
   loadMap() {
     var greenIcon = L.icon({
       iconUrl: 'https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png',
@@ -50,6 +74,22 @@ export class InformacionPage implements OnInit {
       radius: 500
     }).addTo(this.map);
     circle.bindPopup("You wouldn't like to be here");
+  }
+
+  // MÉTODO QUE DESPLAZA A LA PAG LOGIN
+  login() {
+    this.router.navigate(["/login"]);
+  }
+
+  // MÉTODO PARA CERRAR SESIÓN
+  logout(){
+    this.authService.doLogout()
+    .then(res => {
+      this.userEmail = "";
+      this.userUID = "";
+      this.isLogged = false;
+      console.log(this.userEmail);
+    }, err => console.log(err));
   }
 
   ngOnInit() {

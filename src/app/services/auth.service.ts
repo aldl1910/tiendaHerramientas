@@ -11,6 +11,7 @@ export class AuthService {
     public afAuth: AngularFireAuth
   ){}
 
+  // MÉTODO PARA REGISTRAR A LOS USUARIOS
   doRegister(value){
     return new Promise<any>((resolve, reject) => {
       this.afAuth.createUserWithEmailAndPassword(value.email, value.password)
@@ -20,6 +21,7 @@ export class AuthService {
    })
   }
 
+  // MÉTODO PARA INCIAR SESION CON LOS USUARIOS
   doLogin(value){
     return new Promise<any>((resolve, reject) => {
       this.afAuth.signInWithEmailAndPassword(value.email, value.password)
@@ -29,6 +31,7 @@ export class AuthService {
    })
   }
 
+  // MÉTODO PARA CERRAR SESION
   doLogout(){
     return new Promise((resolve, reject) => {
       this.afAuth.signOut()

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
+  // VARIABLES PARA EL INICIO DE SESION
   validations_form: FormGroup;
   errorMessage: string = '';
 
@@ -43,7 +44,8 @@ export class LoginPage implements OnInit {
       ])),
     });
   }
-
+  
+  // MÉTODO QUE AL INICIAR SESION NOS DESPLAZA A LA PAG HOME / EN CASO CONTRARIO MOSTRARÁ UN MENSAJE DE ERROR
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
@@ -54,6 +56,7 @@ export class LoginPage implements OnInit {
     })
   }
 
+  // MÉTODO QUE DESPLAZA A LA PAG REGISTRO
   goRegisterPage(){
     this.router.navigate(["/register"]);
   }

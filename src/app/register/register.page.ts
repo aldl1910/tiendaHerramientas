@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
 
+  // VARIABLES PARA EL INICIO DE SESION
   validations_form: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
@@ -45,6 +46,7 @@ export class RegisterPage implements OnInit {
     });
   }
 
+  // MÉTODO PARA VERIFICAR LA CREACION DE LA CUENTA / EN CASO CONTRARIO MOSTRARÁ UN MENSAJE DE ERROR
   tryRegister(value){
     this.authService.doRegister(value)
      .then(res => {
@@ -58,6 +60,7 @@ export class RegisterPage implements OnInit {
      })
   }
 
+  // MÉTODO QUE DESPLAZA A LA PAG LOGIN
   goLoginPage(){
     this.router.navigate(["/login"]);
   }

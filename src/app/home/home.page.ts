@@ -17,12 +17,14 @@ export class HomePage {
     data:{} as Tienda
   }]
   filtro: string='';
-  
+
+  // VARIABLES USADAS PARA INICIAR SESION
   userEmail: String = "";
   userUID: String = "";
   isLogged: boolean;
 
   tiendaEditando: Tienda;
+
   constructor(
     private firestoreService: FirestoreService, 
     private router: Router,  
@@ -47,12 +49,14 @@ export class HomePage {
     });
   }
 
+  // MÉTODO QUE NOS DESPLAZA A LA PAG DETALLE
   segundaPantalla (){
     this.router.navigate(['detalle/:id'])
   }
 
   idHerramientaSelec: string;
 
+  // MÉTODO QUE ALMACENA LOS DATOS DE LAS HERRAMIENTAS
   selecHerramienta(herramientaSelec){
     console.log("Herramienta seleccionada:");
     console.log(herramientaSelec);
@@ -63,6 +67,8 @@ export class HomePage {
     this.tiendaEditando.imagen = herramientaSelec.data.imagen;
     this.router.navigate(['/detalle', this.idHerramientaSelec]);
   }
+
+  // MÉTODO QUE VERIFICA EL INICIO DE SESIÓN
   ionViewDidEnter(){
     this.isLogged = false;
     this.afAuth.user.subscribe(user =>{
@@ -73,10 +79,13 @@ export class HomePage {
       } 
     })
   }
+
+  // MÉTODO QUE DESPLAZA A LA PAG LOGIN
   login() {
     this.router.navigate(["/login"]);
   }
 
+  // MÉTODO PARA CERRAR SESIÓN
   logout(){
     this.authService.doLogout()
     .then(res => {

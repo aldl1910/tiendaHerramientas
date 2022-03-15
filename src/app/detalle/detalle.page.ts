@@ -16,9 +16,8 @@ import { Router } from '@angular/router';
 })
 export class DetallePage implements OnInit {
   id: string = "";
-  //titulo: string ="";
-  //precio: string ="";
-  // descripcion: string ="";
+
+  // VARIABLES USADAS PARA INICIAR SESION
   userEmail: String = "";
   userUID: String = "";
   isLogged: boolean;
@@ -71,6 +70,7 @@ export class DetallePage implements OnInit {
     });
   }
   
+  // MÉTODO QUE DESCARGA LOS DATOS DE LAS HERRAMIENTAS
   obtenerListaHerramientas(){
     this.firestoreService.consultar("herramientas").subscribe((resultadoConsultaHerramientas) =>
     {
@@ -85,6 +85,8 @@ export class DetallePage implements OnInit {
   }
 
   idHerramientaSelec: string;
+
+  // MÉTODO PARA INSERTAR UNA HERRAMIENTA
   clicBotonInsertar(){
     return this.firestoreService.insertar("herramientas", this.document.data).then(
       ()=> {
@@ -96,6 +98,8 @@ export class DetallePage implements OnInit {
       }
     );
   }
+
+  // MÉTODO PARA BORRAR LA HERRAMIENTA
   clicBotonBorrar(){
     this.alertController.create({
       header: 'Confirm Alert',
@@ -125,7 +129,7 @@ export class DetallePage implements OnInit {
     });
     
   }
-
+  // MÉTODO PARA GUARDAR LA MODIFICACIÓN DE LA HERRAMIENTA
   clicBotonModificar(){
     this.firestoreService.actualizar("herramientas", this.document.id, this.document.data).then(() => {
       this.obtenerListaHerramientas();
@@ -198,6 +202,7 @@ export class DetallePage implements OnInit {
     });
   }
   
+  // MÉTODOS PARA COMPARTIR A TRAVÉS DE REDES SOCIALES Y OTROS MEDIOS
   ShareGeneric(){
     //const url = this.link
     //const text = parameter+'\n'
@@ -222,6 +227,11 @@ export class DetallePage implements OnInit {
   SendInstagram(){
     this.socialSharing.shareViaInstagram(this.document.data.titulo, this.document.data.imagen)
   }
+
+  // FIN
+
+
+  //MÉTODO QUE VERIFICA EL INICIO DE SESIÓN / EN CASO NEGATIVO DESPLAZARÁ A LA PAG HOME
   ionViewDidEnter(){
     this.isLogged = false;
     this.afAuth.user.subscribe(user =>{

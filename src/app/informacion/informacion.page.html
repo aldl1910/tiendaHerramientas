@@ -26,7 +26,12 @@
       </ion-tab-button>
 
 
-      <ion-tab-button tab="login">
+      <ion-tab-button (click)="logout()" *ngIf="this.userUID != '' "tab="login">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>Logged</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="login()" *ngIf="this.userUID == ''" tab="login">
         <ion-icon name="person-add"></ion-icon>
         <ion-label>Log in</ion-label>
       </ion-tab-button>
